@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+    
+    - name: Install Dependencies
+      run: npm install
+    
+    - name: TypeScript Check
+      run: npx tsc --noEmit
+    
+    - name: Lint Check
+      run: npm run lint
+      
+    - name: Run Tests
+      run: npm test
+      
+    - name: Build Check
+      run: npm run build
+
+  expo-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+          
+      - name: 📦 Install dependencies
+        run: npm install
+        
+      - name: 🚀 Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+          
+      - name: 📱 Build Preview
+        run: npx eas-cli build --platform all --profile preview --non-interactive 
