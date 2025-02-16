@@ -68,4 +68,4 @@ npx expo start
 - Expo
 - React Navigation
 - React Native Safe Area Context
-- Expo Vector Icons 
+- Expo Vector Icons # Test CI
