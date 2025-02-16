@@ -1,0 +1,19 @@
+# FeedMyADHD App Context
+
+## Project Overview
+FeedMyADHD is a React Native app built with Expo, designed to be an ADHD-friendly meal planning solution.
+
+## Technical Stack
+- Framework: React Native with Expo
+- Language: TypeScript
+- Development Platform: Expo Go (immediate preview capability)
+
+## Essential Dependencies
+- @react-navigation/native
+- @react-navigation/native-stack
+- @react-navigation/bottom-tabs
+- react-native-safe-area-context
+- react-native-screens
+- expo-status-bar
+
+## Project Structure
